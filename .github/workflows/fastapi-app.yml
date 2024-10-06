@@ -53,7 +53,7 @@ jobs:
       # - name: Run tests
       #   run: |
       #     source .venv/bin/activate
-      #     make test_s1
+      #     make test_v1
       - name: Format code
         run: |
           source .venv/bin/activate

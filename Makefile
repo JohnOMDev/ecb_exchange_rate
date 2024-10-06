@@ -62,18 +62,18 @@ install:
 		pip install flake8 pytest pytest_cov black bandit
 
 format:
-	black ecb_pipeline/s1/
+	black ecb_pipeline/v1/
 
-test_s1:
-	pytest tests/s1/s1_test.py::test_download_bremen_state_data_success
-	pytest tests/s1/s1_test.py::test_get_cadastral_data
+test_v1:
+	pytest tests/v1/v1_test.py::test_download_bremen_state_data_success
+	pytest tests/v1/v1_test.py::test_get_cadastral_data
 
 lint:
-	flake8 ecb_pipeline/s1/ --count --select=E9,F63,F7,F82 --show-source --statistics
-	flake8 ecb_pipeline/s1/ --count --exit-zero --max-complexity=10 --max-line-length=250 --statistics
+	flake8 ecb_pipeline/v1/ --count --select=E9,F63,F7,F82 --show-source --statistics
+	flake8 ecb_pipeline/v1/ --count --exit-zero --max-complexity=10 --max-line-length=250 --statistics
 
 securty:
-	bandit -r ecb_pipeline/s1/ --tests B101, B301, B303, B602, B701
+	bandit -r ecb_pipeline/v1/ --tests B101, B301, B303, B602, B701
 
 docker-compose:
 	docker compose -f docker/docker-compose.yml up -d  --build

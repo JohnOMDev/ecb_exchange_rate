@@ -24,7 +24,7 @@ import pandas as pd
 
 
 logging.basicConfig(format="%(asctime)s %(name)s %(levelname)-10s %(message)s")
-LOG = logging.getLogger("bremen state")
+LOG = logging.getLogger("ECB PIPELINE")
 LOG.setLevel(os.environ.get("LOG_LEVEL", logging.DEBUG))
 
 
@@ -219,7 +219,7 @@ def get_exchange_rate_trends(
 
 
 
-@v1.get("/cadastral/currency")
+@v1.get("/ecb/currency")
 def get_currency_analyses(
 ) -> list[dict]:
     """

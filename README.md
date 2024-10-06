@@ -110,10 +110,15 @@ After the data has been processed, you can query and visualize the results.
 
 2. **Run SQL Queries:**
 
-   Use SQL queries to aggregate and analyze the data. For example, to get the most popular land type in each district:
+   Use SQL queries to aggregate and analyze the data. For example, to analyze revenue trends over time (daily, weekly, monthly).:
 
     ```sql
-
+        SELECT 
+            order_date, 
+            SUM(revenue) AS daily_revenue
+        FROM orders
+        GROUP BY order_date
+        ORDER BY order_date;
     ```
 
 ## Testing
@@ -149,6 +154,9 @@ I consider the following optimization strategies considering the time and resour
 - **Efficient Queries:** Optimize SQL queries to enhance performance.
 - **Parallel Processing:** Accelerate data ingestion using parallel processing techniques.
 - **Columnar File Format and In-Memory Processing** Leverage DuckDB and Parquet’s columnar file format for efficient in-memory data processing.
+
+## TODO
+- Retrieve the exchange rate for holidays and weekends by using the rate from the previous working day.
 
 ## Documentation
 

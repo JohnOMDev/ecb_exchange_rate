@@ -4,12 +4,12 @@ from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 import os
 
-# import ecb_pipeline
+import ecb_pipeline
 
-# ECB_LOCAL_DIR = dirname(dirname(ecb_pipeline.__file__))
+ECB_LOCAL_DIR = dirname(dirname(ecb_pipeline.__file__))
 # Define the project directory
 
-ECB_LOCAL_DIR = os.getenv("ECB_LOCAL_DIR")
+# ECB_LOCAL_DIR = os.getenv("ECB_LOCAL_DIR")
 
 
 class DBCredentials(BaseSettings):

@@ -187,7 +187,26 @@ class Transformer:
                     LOG.info("successfully Ended")
         except Exception as e:
             LOG.error(f"Failed to execute query: {e}")
-            
+
+    @tracer.start_as_current_span("get_currency_analysis")
+    def get_currency_analysis(self)  -> list[tuple]:
+        query = """
+            SELECT 
+                currency_code, 
+                SUM(revenue) AS total_revenue
+            FROM orders
+            GROUP BY currency_code;
+        """
+        
+        try:
+            with self.psqlconnect() as con:
+                with con.cursor() as cur:
+                    cur.execute(query)
+                    data = cur.fetchall()
+                    return data
+                    LOG.info("successfully Ended")
+        except Exception as e:
+            LOG.error(f"Failed to execute query: {e}")    
 
     @tracer.start_as_current_span("to_parquet")
     def to_parquet(self, raw_dir, prepared_file) -> None:

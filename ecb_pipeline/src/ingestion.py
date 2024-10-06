@@ -33,8 +33,8 @@ class Extraction:
 
 
 
-    def download_file(self, response) -> None:
-        download_dir = os.path.join(settings.raw_dir, "day=20241001")
+    def download_file(self, response, partition_date) -> None:
+        download_dir = os.path.join(settings.raw_dir, f"day={partition_date}")
         os.makedirs(download_dir, exist_ok=True)
         filename = f'{download_dir}/ecb_exchange.csv'
         with open(filename, "wb") as f:

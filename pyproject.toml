@@ -20,6 +20,8 @@ duckdb = "^1.1.1"
 opentelemetry-sdk = "^1.27.0"
 psycopg = {extras = ["binary"], version = "^3.2.3"}
 requests = "^2.32.3"
+plotly = "^5.24.1"
+pandas = "^2.2.3"
 
 [build-system]
 requires = ["poetry-core"]

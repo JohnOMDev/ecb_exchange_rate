@@ -1,0 +1,35 @@
+services:
+  ecb_pipeline:
+    image: ecb:v1
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+    networks:
+      - sunday_net
+    volumes:
+      - ecb_data:/opt/data
+    environment:
+      - COMPOSE_CONVERT_WINDOWS_PATHS=1
+      - MAX_WORKERS=1
+      - ECB_LOCAL_DIR=/opt/data
+      - sunday_db_host=${sunday_db_host}
+      - sunday_db_password=${sunday_db_password}
+      - sunday_db_user=${sunday_db_user}
+      - sunday_db_dbname=${sunday_db_dbname}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "2"
+
+networks:
+  sunday_net:
+    driver: bridge
+
+
+volumes:
+  ecb_data:
+    external: true

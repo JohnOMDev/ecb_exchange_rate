@@ -65,8 +65,8 @@ format:
 	black ecb_pipeline/v1/
 
 test_v1:
-	pytest tests/v1/v1_test.py::test_download_bremen_state_data_success
-	pytest tests/v1/v1_test.py::test_get_cadastral_data
+	pytest tests/v1/v1_test.py::test_download_ecb_exchange_data_success
+	pytest tests/v1/v1_test.py::test_get_currency_revenue_data
 
 lint:
 	flake8 ecb_pipeline/v1/ --count --select=E9,F63,F7,F82 --show-source --statistics

@@ -13,7 +13,7 @@ This project is a pipeline for ingesting, transforming, and visualizing data. It
 - `.github`: Contains workflows for continous integration (CI).
 - `docker`: Directory with the Dockerfile for building the container image, Docker Compose files, and environment variables.
 - `scripts`: Contains SQL queries for creating objects required for analytical processing.
-- `ecb_pipeline`: Main project directory housing the application code, including ingestion, transformation, and data loader in src, and analytics in s1.
+- `ecb_pipeline`: Main project directory housing the application code, including ingestion, transformation, and data loader in src, and analytics in v1.
 - `test`: Contains unit tests and other test-related files.
 - `poetry.lock`: Lock file for managing project dependencies.
 - `Makefile`: Defines commands for automating tasks.

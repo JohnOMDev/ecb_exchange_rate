@@ -174,8 +174,7 @@ class Transformer:
         query = """
             SELECT Min(order_date), Max(order_date)
             FROM orders r
-            LEFT JOIN exchange_rates er ON r.order_date=er."date" AND er.currency_code=r.currency_code
-            WHERE order_revenue_eur is NULL;
+            LEFT JOIN exchange_rates er ON r.order_date=er."date" AND er.currency_code=r.currency_code;
         """
         
         try:

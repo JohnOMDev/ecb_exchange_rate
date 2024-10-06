@@ -119,7 +119,6 @@ After the data has been processed, you can query and visualize the results.
 ## Testing
 
 1. **You can test each unit or the full converage (the test can only be performed when running in local mode)**
-    ![Test](images/test.png)
     Full Coverage test
     ```sh
     make test

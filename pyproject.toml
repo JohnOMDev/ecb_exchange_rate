@@ -2,8 +2,13 @@
 name = "ecb-exchange-rate"
 version = "0.1.0"
 description = ""
-authors = ["omolejohna@gmail.com <omolejohna@gmail.com>"]
+authors = ["Omole John <contact@johnomole.me>"]
 readme = "README.md"
+
+packages = [{include = "ecb_pipeline"}]
+
+[tool.poetry.scripts]
+start = "ecb_pipeline.app:main"
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -11,15 +16,14 @@ fastapi = "^0.111.1"
 uvicorn = "^0.30.3"
 pydantic = "^2.8.2"
 pydantic-settings = "^2.4.0"
+duckdb = "^1.1.1"
+opentelemetry-sdk = "^1.27.0"
+psycopg = {extras = ["binary"], version = "^3.2.3"}
+requests = "^2.32.3"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-packages = [{include = "ecb_pipeline"}]
-
-[tool.poetry.scripts]
-start = "ecb_pipeline.app:main"
 
 # Monitoring
 uptrace = "^1.26.0"
@@ -30,7 +34,7 @@ opentelemetry-instrumentation-fastapi = "^0.47b0"
 # Add your dependencies here
 asyncio = "^3.4.3"
 duckdb = "^1.0.0"
-psycopg = {extras = ["binary"], version = "^3.1.18"}
+# psycopg = {extras = ["binary"], version = "^3.1.18"}
 geopandas = "^1.0.1"
 pyarrow = "^17.0.0"
 plotly = "^5.23.0"

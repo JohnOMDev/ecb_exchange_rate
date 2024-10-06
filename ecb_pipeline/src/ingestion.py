@@ -35,7 +35,6 @@ class Extraction:
 
     def download_file(self, response) -> None:
         download_dir = os.path.join(settings.raw_dir, "day=20241001")
-        # download_dir = 'localfile20230101.csv'
         os.makedirs(download_dir, exist_ok=True)
         filename = f'{download_dir}/ecb_exchange.csv'
         with open(filename, "wb") as f:

@@ -22,7 +22,6 @@ logging.basicConfig(format="%(asctime)s %(name)s %(levelname)-10s %(message)s")
 LOG = logging.getLogger(__name__)
 LOG.setLevel(os.environ.get("LOG_LEVEL", logging.DEBUG))
 
-conn = duckdb.connect()
 settings = Settings()
 
 
@@ -136,7 +135,7 @@ class Transformer:
         query = """
             SELECT * 
             FROM information_schema.columns
-            WHERE table_name = 'orders' AND column_name = 'order_revenue_eur'
+            WHERE table_name = 'orders' AND column_name = 'order_revenue_eur';
         """
         
         try:
@@ -170,6 +169,25 @@ class Transformer:
         except Exception as e:
             LOG.error(f"Failed to execute query: {e}")
 
+    @tracer.start_as_current_span("get_historical_order_exchange_rate")
+    def get_historical_order_exchange_rate(self)  -> list[tuple]:
+        query = """
+            SELECT Min(order_date), Max(order_date)
+            FROM orders r
+            LEFT JOIN exchange_rates er ON r.order_date=er."date" AND er.currency_code=r.currency_code
+            WHERE order_revenue_eur is NULL;
+        """
+        
+        try:
+            with self.psqlconnect() as con:
+                with con.cursor() as cur:
+                    cur.execute(query)
+                    data = cur.fetchone()
+                    return data
+                    LOG.info("successfully Ended")
+        except Exception as e:
+            LOG.error(f"Failed to execute query: {e}")
+            
 
     @tracer.start_as_current_span("to_parquet")
     def to_parquet(self, raw_dir, prepared_file) -> None:

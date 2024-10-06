@@ -157,6 +157,7 @@ I consider the following optimization strategies considering the time and resour
 
 ## TODO
 - Retrieve the exchange rate for holidays and weekends by using the rate from the previous working day.
+- Leverage orchestration tools like Apache Airflow or Prefect to automate and manage the following pipeline: Download the exchange rate data, Prepare the data and Load the cleaned and prepared data into the target database or file storage.
 
 ## Documentation
 

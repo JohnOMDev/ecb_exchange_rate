@@ -64,7 +64,7 @@ def download_daily_exchange_rate() -> str:
         startPeriod = data_date
         endPeriod = data_date
         resp = extraction_handler.ecb_exchange_api(startPeriod, endPeriod)
-        extraction_handler.download_file(resp)
+        extraction_handler.download_file(resp, partition_date)
         return "OK"
     except Exception as e:
         return f"Error: {str(e)}"
@@ -187,8 +187,8 @@ def get_exchange_rate_trends(
             CURRENCY,
             exchange_rate
         FROM {read_prepared_sql()}
-        ORDER BY TIME_PERIOD
-        ;
+        WHERE TIME_PERIOD < '2023-05-01'
+        ORDER BY TIME_PERIOD;
         """
         ).to_df()
 

@@ -194,6 +194,7 @@ class Transformer:
                 currency_code, 
                 SUM(revenue) AS total_revenue
             FROM orders
+            WHERE order_status IN ('complete', 'closed')
             GROUP BY currency_code;
         """
         

@@ -118,6 +118,7 @@ After the data has been processed, you can query and visualize the results.
             SUM(revenue) AS daily_revenue
         FROM orders
         GROUP BY order_date
+        WHERE order_status IN ('complete', 'closed')
         ORDER BY order_date;
     ```
 
